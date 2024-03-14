@@ -1,0 +1,62 @@
+#include <iostream>
+#include <vector>
+#include <utility>
+using namespace std;
+
+vector <vector <int>> makeVector();
+
+vector <vector<int>> Reverse(const vector<vector<int>>v);
+
+void print_vector(const vector<vector<int>>&v);
+
+int main(){
+    vector <vector <int>> bigvec,revvec;
+    vector <vector<int>> difvec = {{1,2,3},{4,5,6},{7,8,9}};
+    bigvec = makeVector();
+    print_vector(bigvec);
+    cout<<"reversed vector"<<endl;
+    revvec = Reverse(bigvec);
+    print_vector(revvec);
+    cout<<"mr.ark test case"<<endl;
+    print_vector(Reverse(difvec));
+    
+    
+    return 0;
+}
+
+vector <vector <int>> makeVector(){
+    vector <vector <int>> V;
+    vector <int> temp;
+    
+    for (uint x = 0; x<3; x++){
+        temp = {};
+        for (uint y = 1;y<4;y++){
+            temp.push_back(y);
+        }
+        V.push_back(temp);
+    }
+    return V;
+}
+
+void print_vector(const vector<vector<int>>&v){
+    for (auto i: v){
+        for (auto x:i){
+            cout<<x<<' ';
+        }
+    cout<<endl;
+    }
+}
+
+vector <vector<int>> Reverse(const vector<vector<int>>v){
+    vector <vector<int>> revvec;
+    vector<int> temp;
+    for (int x = v.size()-1;x>-1;x--){
+        for (int i = v.at(x).size()-1;i>-1;i--){
+            temp.push_back(v[x].at(i));
+        }
+        revvec.push_back(temp);
+        temp = {};
+    }
+    return revvec;
+}
+            
